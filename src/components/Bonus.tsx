@@ -5,25 +5,29 @@ const bonuses = [
     icon: BookOpen,
     title: 'Coletânea de versículos por tema',
     value: 'R$ 49,90',
-    color: 'from-purple-500 to-purple-600'
+    color: 'from-purple-500 to-purple-600',
+    image: '/mockup-mulher-virtuosa-9-768x768.png'
   },
   {
     icon: Sparkles,
     title: 'Pack de Templates Cristãos 3D Pixar',
     value: 'R$ 19,90',
-    color: 'from-pink-500 to-pink-600'
+    color: 'from-pink-500 to-pink-600',
+    image: null
   },
   {
     icon: Bookmark,
     title: '100 Marcadores de Páginas',
     value: 'R$ 19,90',
-    color: 'from-fuchsia-500 to-purple-600'
+    color: 'from-fuchsia-500 to-purple-600',
+    image: null
   },
   {
     icon: Map,
     title: 'Mapa Mental da Oração',
     value: 'GRÁTIS',
-    color: 'from-rose-500 to-pink-600'
+    color: 'from-rose-500 to-pink-600',
+    image: null
   }
 ];
 
@@ -47,16 +51,35 @@ export default function Bonus() {
           {bonuses.map((bonus, index) => (
             <div
               key={index}
-              className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 border-2 border-purple-100"
+              className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 border-2 border-purple-100 overflow-hidden"
             >
-              <div className={`bg-gradient-to-br ${bonus.color} w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto`}>
-                <bonus.icon className="text-white" size={32} />
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 text-center mb-2">{bonus.title}</h3>
-              <div className="text-center">
-                <span className="line-through text-gray-400 text-sm">{bonus.value}</span>
-                <p className="text-green-600 font-bold text-lg">GRÁTIS</p>
-              </div>
+              {bonus.image ? (
+                <div className="relative">
+                  <img
+                    src={bonus.image}
+                    alt={bonus.title}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold text-gray-900 text-center mb-2">{bonus.title}</h3>
+                    <div className="text-center">
+                      <span className="line-through text-gray-400 text-sm">{bonus.value}</span>
+                      <p className="text-green-600 font-bold text-lg">GRÁTIS</p>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="p-6">
+                  <div className={`bg-gradient-to-br ${bonus.color} w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto`}>
+                    <bonus.icon className="text-white" size={32} />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 text-center mb-2">{bonus.title}</h3>
+                  <div className="text-center">
+                    <span className="line-through text-gray-400 text-sm">{bonus.value}</span>
+                    <p className="text-green-600 font-bold text-lg">GRÁTIS</p>
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>
