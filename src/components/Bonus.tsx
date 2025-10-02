@@ -13,7 +13,7 @@ const bonuses = [
     title: 'Pack de Templates Cristãos 3D Pixar',
     value: 'R$ 19,90',
     color: 'from-pink-500 to-pink-600',
-    image: null
+    image: '/mockup-templates-3d.png'
   },
   {
     icon: Bookmark,
